@@ -1,0 +1,23 @@
+<h4 class="dashboard"><a href="/songs">Dashboard</a></h4>
+<h2><%= @song.artist %> - <%= @song.title %></h2>
+<% if @song.selections.empty? %>
+    <h4><%= @song.title %> hasn't been added to any playlists yet!</h4>
+<% else %>
+    <h4>Users who added <%= @song.title %>:</h4>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Times Added</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @song.selections.each do |selection| %>
+            <tr>
+                <td><a href="/users/<%= selection.user.id %>"><%= selection.user.first_name %> <%= selection.user.last_name %></a></td>
+                <td><%= selection.count %></td>
+            </tr>
+            <% end %>
+        </tbody>
+    </table>
+<% end %>

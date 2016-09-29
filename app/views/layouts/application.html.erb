@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Playlist</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<% if session[:user_id] %>
+    <h4 class="logout"><a href="/users" data-method='delete'>Logout</a></h4>
+<% end %>
+
+<% if alert %>
+    <ul>
+        <% alert.each do |a| %>
+        <li><%= a %></li>
+        <% end %>
+    </ul>
+<% end %>
+
+<%= yield %>
+
+</body>
+</html>
